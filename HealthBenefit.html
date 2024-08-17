@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standing Desk Company</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .full-screen {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .left, .left-2, .left-3 {
+            background-color: #fff;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .left h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-align: center;
+        }
+
+        .left p {
+            margin: 20px 0;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .left button, .btn-outline-dark {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+
+        .right, .right-2, .right-3 {
+            width: 50%;
+            background-color: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .right img, .placeholder-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0 0 50% 50%;
+        }
+
+        .right .text, .right-3 .text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .right .text p, .right-3 .text p {
+            margin: 0;
+            flex: 1;
+        }
+
+        .slider-section {
+            height: 30vh; /* Adjust height as needed */
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+
+        .slider {
+            position: relative;
+            width: 80%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .nav-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        .icons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .icons img {
+            width: 30px;
+            height: auto;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .menu-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: #000;
+            margin: 5px 0;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-icon.open div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .menu-icon.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.open div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        #sidebar-wrapper {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #ddd;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            padding-top: 60px;
+        }
+
+        #sidebar-wrapper.active {
+            left: 0;
+        }
+
+        .sidebar-heading {
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid #aaa;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            background-color: transparent;
+            transition: background-color 0.3s;
+            text-align: justify;
+            text-decoration: none;
+        }
+
+        .sidebar-link:hover {
+            background-color: #f0f0f0;
+        }
+
+        .intro-text {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .product-section {
+            display: flex;
+            margin: 20px;
+        }
+
+        .left-3 {
+            width: 30%;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        .right-3 {
+            width: 70%;
+            padding: 20px;
+        }
+
+        .card-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .health-benefits {
+            height: 30vh; 
+            background-image: url('https://via.placeholder.com/1920x600'); 
+            background-color: #9ae4ff;
+            background-size: cover;
+            background-position: center;
+            border-bottom-left-radius: 30%;
+            border-bottom-right-radius: 30%;
+        }
+
+        .health-benefits-text {
+            text-align: center;
+            color: #000000;
+            padding: 20px;
+        }
+
+        .health-benefits-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .health-benefits-text p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .rounded-bottom {
+            border-radius: 0 0 30px 30px;
+        }
+        .banner {
+            background-image: url('https://standdesk.com/cdn/shop/files/hero-studio-3000x1200.jpg?v=1698976709&width=3000'); /* Placeholder image URL */
+            background-size: cover;
+            background-position: center;
+            height: 30vh; /* Adjust as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .banner-content {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .banner h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 1.5em;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu Icon -->
+    <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Side Navigation Bar -->
+    <div class="side-bar d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-end" id="sidebar-wrapper">
+            <div class="sidebar-heading">SDC</div>
+            <div class="list-group list-group-flush">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="RisingDesk.html" class="sidebar-link">Rising Desk</a>
+                <a href="HealthBenefit.html" class="sidebar-link">Health Benefits</a>
+                <a href="contactUs.html" class="sidebar-link">Contact Us</a>
+                <a href="cart.html" class="sidebar-link">Cart</a>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-user ms-5" style="font-size: 20px; cursor: pointer;">Login</i>        
+            <a href="cart.html" style="text-decoration: none;"> <i class="fas fa-shopping-cart ms-3" style="font-size: 20px; cursor: pointer;"></i></a>
+        </div>
+    </div>
+
+    <header class="banner">
+        <div class="banner-content ">
+        </div>
+    </header>
+
+    <!-- Health Benefits Section -->
+    <!-- Page content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="intro-text">
+                        <h2>Why Choose a Standing Desk?</h2>
+                        <p>Standing desks have become increasingly popular due to their potential health benefits. Here are some reasons why you should consider using one:</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://files.oaiusercontent.com/file-z3wweCLNbHf4YUnO0MkQL4A3?se=2024-08-17T00%3A34%3A29Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D43ed0ccc-392d-4732-abd3-0abb43397cb3.webp&sig=nXoa1IFC1kIS6LV22IKNLWEMj6z3AqiVrm%2BNzLhKyaI%3D" class="card-img-top" alt="Improves Posture">
+                        <div class="card-body">
+                            <h5 class="card-title">Improves Posture</h5>
+                            <p class="card-text">Standing desks can help improve your posture and reduce the risk of neck and back pain.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://files.oaiusercontent.com/file-df2E15A68G7AgK3g3Ts3Gagc?se=2024-08-17T00%3A35%3A07Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D492fb8f6-faa0-470e-a1fe-2b730973a47e.webp&sig=PT144viIuBjxVeRcplGoAsLyfk2j9eAJXdP%2B4nO5/E0%3D" class="card-img-top" alt="Increases Energy Levels">
+                        <div class="card-body">
+                            <h5 class="card-title">Increases Energy Levels</h5>
+                            <p class="card-text">Users often report increased energy levels and reduced feelings of fatigue.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://files.oaiusercontent.com/file-1cFv1h0l15ASyD6BaIIMNMPk?se=2024-08-17T00%3A34%3A54Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Da3bf2654-dc38-4996-b9eb-8fcc73c254d8.webp&sig=Z/AF3U7UVPP8F%2Bx3miYYFe6ZWzaL4KgqdZjEwjSVRlk%3D" class="card-img-top" alt="Boosts Productivity">
+                        <div class="card-body">
+                            <h5 class="card-title">Boosts Productivity</h5>
+                            <p class="card-text">Standing desks may enhance productivity by reducing distractions and improving focus.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://files.oaiusercontent.com/file-BR1Ii5HdwBs5ehZgpobozlKe?se=2024-08-17T00%3A34%3A42Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3Dc558b132-4864-4eeb-9f30-66f2dbd434ed.webp&sig=wPfM3rzWtSA0VsMhjsLXJkcX/szz6SpWIo/k8n1TYZI%3D" class="card-img-top" alt="Burns More Calories">
+                        <div class="card-body">
+                            <h5 class="card-title">Burns More Calories</h5>
+                            <p class="card-text">Standing burns more calories compared to sitting, contributing to weight management.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="py-5">
+        <div class="container m-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Subscribe to our newsletter</h5>
+                        <p>Monthly digest of what's new and exciting from us.</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2024 SDC Inc. All rights reserved.</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-body-emphasis" href="https://twitter.com/random" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="https://instagram.com/random" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="https://facebook.com/random" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS and custom script for sidebar -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzV9ScfqxoQH5F1RPkCZRgQ1AhdhnI1N8WsoFi4Yk5n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-1XwDk1L/LtLsh2nzZaMS+rYsfPxI2fP8P3Q8rjZxXCIpw3tVoW6ZB2o2aq1fCiz" crossorigin="anonymous"></script>
+    <script>
+        // Function to toggle sidebar
+        function toggleSidebar() {
+            document.getElementById('sidebar-wrapper').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

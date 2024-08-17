@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standing Desk Company</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="mt-5">
+    <!-- Menu Icon -->
+    <div class="menu-icon" id="menu-icon" onclick="toggleSidebar()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Side Navigation Bar -->
+    <div class="side-bar d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-end" id="sidebar-wrapper">
+            <div class="sidebar-heading">SDC</div>
+            <div class="list-group list-group-flush">
+                <a href="index.html" class="sidebar-link">Home</a>
+                <a href="RisingDesk.html" class="sidebar-link">Rising Desk</a>
+                <a href="HealthBenefit.html" class="sidebar-link">Health Benefits</a>
+                <a href="contactUs.html" class="sidebar-link">Contact Us</a>
+                <a href="cart.html" class="sidebar-link">Cart</a>
+            </div>
+        </div>
+        <div class="icons">
+            <i class="fas fa-user ms-5" style="font-size: 20px; cursor: pointer;">Login</i>    
+            <a href="cart.html" style="text-decoration: none;"> <i class="fas fa-shopping-cart ms-3" style="font-size: 20px; cursor: pointer;"></i></a>   
+        </div>
+        <!-- Page content -->
+    </div>
+    </section>
+    
+    <div class="intro-text-2">
+        <h2>All Products</h2>
+        <p>Welcome to Rising Desk</p>
+        <p>Discover a new level of comfort and productivity with our innovative desk solutions. At Rising Desk, we believe in creating workspaces that adapt to your needs, enhancing your well-being and efficiency.</p>
+        <p>Whether you're working from home or in the office, our desks are designed to support your posture and improve your workflow.</p>
+    </div>
+
+    <div class="product-section-2">
+        <div class="left-3">
+            <div class="search-box mb-3">
+                <input type="text" class="form-control" placeholder="Search for products">
+            </div>
+            <div class="categories-sorting">
+                <h5>Categories</h5>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Category
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                        <li><a class="dropdown-item" href="#">Category 1</a></li>
+                        <li><a class="dropdown-item" href="#">Category 2</a></li>
+                        <li><a class="dropdown-item" href="#">Category 3</a></li>
+                        <li><a class="dropdown-item" href="#">Category 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="right-3">
+            <div class="card-group">
+                <div class="card">
+                    <img src ="https://m.media-amazon.com/images/I/81JnWF-jqPL.jpg" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <br>
+                        <p class="card-text">Titan Gaming Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>                
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://img.ltwebstatic.com/images3_spmp/2023/06/21/16873302197e3462bfa6310153d1c6d520d7080392_thumbnail_720x.jpg" class="card-img-top" alt="Product 2">
+                    <div class="card-body">
+                        <br>
+                        <p class="card-text">Elite Command Center</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://c1.neweggimages.com/productimage/nb640/AVR3S2107083JmFz.jpg" class="card-img-top" alt="Product 3">
+                    <div class="card-body">
+                        <p class="card-text">Ultimate Battle Station</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://static.ajproducts.com/resize/globalassets/489502.jpg?ref=DD153AEC9E&width=770" class="card-img-top" alt="Product 4">
+                    <div class="card-body">
+                        <p class="card-text">Adjustable Standing Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://static.ajproducts.com/resize/globalassets/913156.jpg?ref=8F7317EA3E&width=770" class="card-img-top" alt="Product 5">
+                    <div class="card-body">
+                        <p class="card-text">Compact Workstation Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.thdstatic.com/productImages/95e97f54-f192-51a4-a2dd-fc15bd5eb28b/svn/black-hanover-standing-desks-hsd0408-blk-64_600.jpg" class="card-img-top" alt="Product 6">
+                    <div class="card-body">
+                        <p class="card-text">Rolling Laptop Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://cdn11.bigcommerce.com/s-sp9oc95xrw/images/stencil/1280x1280/products/16075/72161/1__13897.1702467172.jpg?c=2" class="card-img-top" alt="Product 7">
+                    <div class="card-body">
+                        <p class="card-text">Wooden Adjustable Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://www.gostand.co.uk/cdn/shop/products/antracite_Blackframefinalrender_1024x1024.jpg?v=1624447812" class="card-img-top" alt="Product 8">
+                    <div class="card-body">
+                        <p class="card-text">Black Ergonomic Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>                     
+                     </div>
+                </div>
+                <div class="card">
+                    <img src="https://furnitureatwork.com.au/cdn/shop/collections/ascend_standing_desk_white.jpg?v=1707460860" class="card-img-top" alt="Product 9">
+                    <div class="card-body">
+                        <p class="card-text">White Adjustable Standing Desk</p>
+                        <div class="button-class d-flex">
+                            <button class="btn btn-primary">Add To Cart</button>
+                            <button class="btn btn-secondary">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="py-5">
+        <div class="container m-5">
+            <div class="row">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-6 col-md-2 mb-3">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
+                        <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <form>
+                        <h5>Subscribe to our newsletter</h5>
+                        <p>Monthly digest of what's new and exciting from us.</p>
+                        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                            <label for="newsletter1" class="visually-hidden">Email address</label>
+                            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                <p>© 2024 SDC Inc. All rights reserved..</p>
+                <ul class="list-unstyled d-flex">
+                    <li class="ms-3"><a class="link-body-emphasis" href="https://twitter.com/random" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="https://instagram.com/random" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li class="ms-3"><a class="link-body-emphasis" href="https://facebook.com/random" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle (including Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar-wrapper").classList.toggle("active");
+            document.getElementById("menu-icon").classList.toggle("open");
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownMenu = document.querySelector('.categories-sorting .dropdown-menu');
+            const dropdownToggle = document.querySelector('.categories-sorting .dropdown-toggle');
+
+            dropdownToggle.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!dropdownToggle.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
